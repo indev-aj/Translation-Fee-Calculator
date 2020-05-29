@@ -42,6 +42,8 @@
             this.totalLbl = new System.Windows.Forms.Label();
             this.calBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.everyBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -88,7 +90,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 154);
+            this.label5.Location = new System.Drawing.Point(12, 153);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(137, 23);
             this.label5.TabIndex = 4;
@@ -98,7 +100,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 188);
+            this.label6.Location = new System.Drawing.Point(12, 220);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 23);
             this.label6.TabIndex = 5;
@@ -136,7 +138,7 @@
             // 
             this.totalLbl.AutoSize = true;
             this.totalLbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalLbl.Location = new System.Drawing.Point(191, 188);
+            this.totalLbl.Location = new System.Drawing.Point(191, 220);
             this.totalLbl.Name = "totalLbl";
             this.totalLbl.Size = new System.Drawing.Size(19, 21);
             this.totalLbl.TabIndex = 10;
@@ -145,7 +147,7 @@
             // calBtn
             // 
             this.calBtn.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calBtn.Location = new System.Drawing.Point(45, 228);
+            this.calBtn.Location = new System.Drawing.Point(45, 260);
             this.calBtn.Name = "calBtn";
             this.calBtn.Size = new System.Drawing.Size(164, 49);
             this.calBtn.TabIndex = 11;
@@ -157,11 +159,28 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(175, 188);
+            this.label7.Location = new System.Drawing.Point(175, 220);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(19, 21);
             this.label7.TabIndex = 12;
             this.label7.Text = "$";
+            // 
+            // everyBox
+            // 
+            this.everyBox.Location = new System.Drawing.Point(179, 179);
+            this.everyBox.Name = "everyBox";
+            this.everyBox.Size = new System.Drawing.Size(40, 20);
+            this.everyBox.TabIndex = 13;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(12, 179);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(139, 23);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Discount Every";
             // 
             // Form1
             // 
@@ -169,6 +188,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(254, 321);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.everyBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.calBtn);
             this.Controls.Add(this.totalLbl);
@@ -205,6 +226,8 @@
         private System.Windows.Forms.Label totalLbl;
         private System.Windows.Forms.Button calBtn;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox everyBox;
+        private System.Windows.Forms.Label label8;
     }
 }
 
