@@ -12,6 +12,7 @@ namespace Translation_Fee_Calculator
 {
     public partial class Form1 : Form
     {
+        // Variable declaration
         float rate, dis, total_amount;
         int extra, page, freq, pageCount, from, every;
 
@@ -39,9 +40,12 @@ namespace Translation_Fee_Calculator
             }
 
             totalLbl.Text = total_amount.ToString();
-            profitLbl.Text = (total_amount * 0.8).ToString();
+
+            // Times 0.8 because Fiverr take 20% from the price
+            profitLbl.Text = (total_amount * 0.8).ToString(); 
         }
 
+        // If user press Enter key, calculate
         private void pageBox_click(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -62,6 +66,7 @@ namespace Translation_Fee_Calculator
             pageBox.Select();
         }
 
+        // If user press the Calculate Button, calculate
         private void calBtn_Click(object sender, EventArgs e)
         {
             calculate();
