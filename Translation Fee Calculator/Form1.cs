@@ -15,17 +15,7 @@ namespace Translation_Fee_Calculator
         float rate, dis, total_amount;
         int extra, page, freq, pageCount, from, every;
 
-        public Form1()
-        {
-            InitializeComponent();
-            // Default Value
-            disFromBox.Text = "30";
-            everyBox.Text = "20";
-            rateBox.Text = "1";
-            disBox.Text = "5";
-        }
-
-        private void calBtn_Click(object sender, EventArgs e)
+        public void calculate()
         {
             // Get value from each textbox
             int.TryParse(pageBox.Text, out pageCount);
@@ -38,7 +28,7 @@ namespace Translation_Fee_Calculator
             total_amount = pageCount * rate;
             if (pageCount >= from)
             {
-                if(every > 0)
+                if (every > 0)
                 {
                     extra = pageCount % every;
                     page = pageCount - extra;
@@ -49,6 +39,33 @@ namespace Translation_Fee_Calculator
             }
 
             totalLbl.Text = total_amount.ToString();
+            profitLbl.Text = (total_amount * 0.8).ToString();
         }
+
+        private void pageBox_click(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                calculate();
+            }
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+            // Default Value
+            disFromBox.Text = "30";
+            everyBox.Text = "20";
+            rateBox.Text = "1";
+            disBox.Text = "5";
+
+            pageBox.Select();
+        }
+
+        private void calBtn_Click(object sender, EventArgs e)
+        {
+            calculate();
+        }
+
     }
 }
