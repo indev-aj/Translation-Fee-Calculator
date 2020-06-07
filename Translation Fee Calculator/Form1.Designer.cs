@@ -47,6 +47,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.profitLbl = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.durationLbl = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -103,7 +106,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 201);
+            this.label6.Location = new System.Drawing.Point(11, 201);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 23);
             this.label6.TabIndex = 5;
@@ -115,6 +118,7 @@
             this.rateBox.Name = "rateBox";
             this.rateBox.Size = new System.Drawing.Size(40, 20);
             this.rateBox.TabIndex = 6;
+            this.rateBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pageBox_click);
             // 
             // pageBox
             // 
@@ -130,6 +134,7 @@
             this.disBox.Name = "disBox";
             this.disBox.Size = new System.Drawing.Size(40, 20);
             this.disBox.TabIndex = 8;
+            this.disBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pageBox_click);
             // 
             // disFromBox
             // 
@@ -137,6 +142,7 @@
             this.disFromBox.Name = "disFromBox";
             this.disFromBox.Size = new System.Drawing.Size(40, 20);
             this.disFromBox.TabIndex = 9;
+            this.disFromBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pageBox_click);
             // 
             // totalLbl
             // 
@@ -152,7 +158,7 @@
             // calBtn
             // 
             this.calBtn.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calBtn.Location = new System.Drawing.Point(43, 274);
+            this.calBtn.Location = new System.Drawing.Point(43, 298);
             this.calBtn.Name = "calBtn";
             this.calBtn.Size = new System.Drawing.Size(164, 49);
             this.calBtn.TabIndex = 11;
@@ -176,6 +182,7 @@
             this.everyBox.Name = "everyBox";
             this.everyBox.Size = new System.Drawing.Size(40, 20);
             this.everyBox.TabIndex = 13;
+            this.everyBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pageBox_click);
             // 
             // label8
             // 
@@ -191,7 +198,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(12, 228);
+            this.label9.Location = new System.Drawing.Point(11, 224);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 23);
             this.label9.TabIndex = 16;
@@ -201,7 +208,7 @@
             // 
             this.profitLbl.AutoSize = true;
             this.profitLbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profitLbl.Location = new System.Drawing.Point(183, 222);
+            this.profitLbl.Location = new System.Drawing.Point(183, 225);
             this.profitLbl.Name = "profitLbl";
             this.profitLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.profitLbl.Size = new System.Drawing.Size(19, 21);
@@ -212,18 +219,52 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(166, 222);
+            this.label11.Location = new System.Drawing.Point(166, 225);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(19, 21);
             this.label11.TabIndex = 18;
             this.label11.Text = "$";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(11, 247);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 23);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Duration";
+            // 
+            // durationLbl
+            // 
+            this.durationLbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.durationLbl.Location = new System.Drawing.Point(121, 249);
+            this.durationLbl.Name = "durationLbl";
+            this.durationLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.durationLbl.Size = new System.Drawing.Size(64, 21);
+            this.durationLbl.TabIndex = 20;
+            this.durationLbl.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(184, 249);
+            this.label13.Name = "label13";
+            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label13.Size = new System.Drawing.Size(48, 21);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Days";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(253, 335);
+            this.ClientSize = new System.Drawing.Size(253, 365);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.durationLbl);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.profitLbl);
             this.Controls.Add(this.label9);
@@ -242,6 +283,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -271,6 +313,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label profitLbl;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label durationLbl;
+        private System.Windows.Forms.Label label13;
     }
 }
 
