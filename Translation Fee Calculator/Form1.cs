@@ -10,7 +10,7 @@ namespace Translation_Fee_Calculator
         int extra, page, freq, pageCount, from, every;
         int duration;
 
-        public void calculate()
+        public void calculatePrice()
         {
             // Get value from each textbox
             int.TryParse(pageBox.Text, out pageCount);
@@ -21,7 +21,6 @@ namespace Translation_Fee_Calculator
             float.TryParse(disBox.Text, out dis);
 
             total_amount = pageCount * rate;
-            duration = 5;
 
             if (pageCount >= from)
             {
@@ -32,23 +31,33 @@ namespace Translation_Fee_Calculator
                     freq = page / every;
                     dis *= freq;
                     total_amount = (page - dis + extra) * rate;
-
-                    duration *= freq;
                 }
             }
 
-            durationLbl.Text = duration.ToString();
+            calculateDuration();
             totalLbl.Text = total_amount.ToString();
 
             // Times 0.8 because Fiverr take 20% from the price
             profitLbl.Text = (total_amount * 0.8).ToString(); 
         }
 
+        public void calculateDuration()
+        {
+            duration = 0;
+
+            for (int i=4;i<pageCount; i+=10)
+            {
+                duration++;
+            }
+
+           durationLbl.Text = duration.ToString();
+        }
+
         // If user press Enter key, calculate
         private void pageBox_click(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                calculate();            
+                calculatePrice();            
         }
 
         public Form1()
@@ -68,7 +77,7 @@ namespace Translation_Fee_Calculator
         // If user press the Calculate Button, calculate
         private void calBtn_Click(object sender, EventArgs e)
         {
-            calculate();
+            calculatePrice();
         }
 
     }
