@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace Translation_Fee_Calculator
 {
     public partial class Form1 : Form
     {
         // Variable declaration
+        String fromCurrency = "USD";
+        String toCurrency = "MYR";
+
         float rate, dis, total_amount;
+        float profitUSD, profitMYR;
+
         int extra, page, freq, pageCount, from, every;
         int duration;
 
-        public void calculatePrice()
+        public void calculateUSD()
         {
             // Get value from each textbox
             int.TryParse(pageBox.Text, out pageCount);
@@ -34,11 +40,29 @@ namespace Translation_Fee_Calculator
                 }
             }
 
-            calculateDuration();
             totalLbl.Text = total_amount.ToString();
 
             // Times 0.8 because Fiverr take 20% from the price
-            profitLbl.Text = (total_amount * 0.8).ToString(); 
+            profitUSD = (float)(total_amount * 0.8);
+            profitLbl.Text = profitUSD.ToString();
+            
+            calculateDuration();
+        }
+
+        public Task<String> calculateMYR()
+        {
+            
+            profitMYR = CurrencyConverter.GetExchangeRate(fromCurrency, toCurrency, profitUSD);
+            return Task.FromResult(profitMYR.ToString("0.00"));
+        }
+
+        public async void calculateMYRAsync()
+        {
+            rmLbl.Text = "    Loading";
+            profitLblMyr.Text = "";
+            var task = Task.Run(() => calculateMYR());
+            profitLblMyr.Text = await task;
+            rmLbl.Text = "RM";
         }
 
         public void calculateDuration()
@@ -46,19 +70,11 @@ namespace Translation_Fee_Calculator
             duration = 0;
 
             for (int i=4;i<pageCount; i+=10)
-            {
                 duration++;
-            }
 
-           durationLbl.Text = duration.ToString();
+            durationLbl.Text = duration.ToString();
         }
 
-        // If user press Enter key, calculate
-        private void pageBox_click(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                calculatePrice();            
-        }
 
         public Form1()
         {
@@ -74,10 +90,21 @@ namespace Translation_Fee_Calculator
             pageBox.Select();
         }
 
+        // If user press Enter key, calculate
+        private void pageBox_click(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                calculateUSD();
+                calculateMYRAsync();
+            }
+        }
+
         // If user press the Calculate Button, calculate
         private void calBtn_Click(object sender, EventArgs e)
         {
-            calculatePrice();
+            calculateUSD();
+            calculateMYRAsync();
         }
 
     }
